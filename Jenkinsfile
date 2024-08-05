@@ -1,21 +1,25 @@
-node{
-    git branch: 'main', url: 'https://github.com/aladdin-taijan/Simple-Jave-Project.git'
-    stage('build'){
-        try{
-            sh'echo "build stage"'
+pipeline{
+    agent any
+
+    stages{
+        stage('Build'){
+            steps{
+                script{
+                    echo "Building the application in progress"
+                }
+            }
         }
-        catch(Exception e){
-            sh'echo "We have an error"'
-            throw e
+        
+        stage('test'){
+            steps{
+                script{
+                    echo "testing the application in progress"
+                }
+
+            }
         }
-    }
-    stage('test'){
-        if (env.BRANCH_NAME == 'feat'){
-            sh'echo "test stage"'
-        }
-        else{
-            sh'echo "We have an error"'
-        }
+
     }
 
+    
 }
