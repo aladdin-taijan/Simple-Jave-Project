@@ -1,11 +1,14 @@
 pipeline{
-    agent any
+    agent {
+        label 'AWS-agent'
+    }
 
     stages{
         stage('Build'){
             steps{
                 script{
-                    echo "Building the application in progress"
+                    sh 'mvn clean package'
+                    
                 }
             }
         }
